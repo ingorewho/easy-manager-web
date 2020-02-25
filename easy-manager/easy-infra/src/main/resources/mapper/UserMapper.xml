@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easy.infra.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.easy.infra.dto.User">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="user_nick_name" jdbcType="VARCHAR" property="userNickName" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="BIGINT" property="updateUserId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, user_name, user_pwd, mobile, user_nick_name, status, email, create_user_id, create_date,
+    update_user_id, update_date, deleted
+  </sql>
+  <insert id="insert" parameterType="com.easy.infra.dto.User">
+    insert into `user`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPwd != null">
+        user_pwd,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="userNickName != null">
+        user_nick_name,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.easy.infra.dto.User">
+    update `user`
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null">
+        user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+  </update>
+  <select id="select" parameterType="com.easy.infra.dto.User" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from `user` where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="userName != null">
+       and user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userPwd != null">
+       and user_pwd = #{userPwd,jdbcType=VARCHAR}
+    </if>
+    <if test="mobile != null">
+       and mobile = #{mobile,jdbcType=VARCHAR}
+    </if>
+    <if test="userNickName != null">
+       and user_nick_name = #{userNickName,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null">
+       and `status` = #{status,jdbcType=TINYINT}
+    </if>
+    <if test="email != null">
+       and email = #{email,jdbcType=VARCHAR}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="deleted != null">
+       and deleted = #{deleted,jdbcType=TINYINT}
+    </if>
+  </select>
+  <select id="selectOne" parameterType="com.easy.infra.dto.User" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from `user` where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="userName != null">
+       and user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userPwd != null">
+       and user_pwd = #{userPwd,jdbcType=VARCHAR}
+    </if>
+    <if test="mobile != null">
+       and mobile = #{mobile,jdbcType=VARCHAR}
+    </if>
+    <if test="userNickName != null">
+       and user_nick_name = #{userNickName,jdbcType=VARCHAR}
+    </if>
+    <if test="status != null">
+       and `status` = #{status,jdbcType=TINYINT}
+    </if>
+    <if test="email != null">
+       and email = #{email,jdbcType=VARCHAR}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="deleted != null">
+       and deleted = #{deleted,jdbcType=TINYINT}
+    </if>
+     limit 1 
+  </select>
+
+  <delete id="deleteByPkIds">
+    update `user` set deleted=1, update_user_id=#{updateUserId}
+    where 1=1
+    <if test="ids != null and ids.size() > 0">
+      and id in
+      <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </if>
+  </delete>
+
+  <update id="updateUserStatus">
+    update `user` set status=#{status}, update_user_id=#{updateUserId}
+    where deleted=0
+    <if test="ids != null and ids.size() > 0">
+      and id in
+      <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+        #{item}
+      </foreach>
+    </if>
+  </update>
+
+  <select id="selectUserList" parameterType="com.easy.infra.bo.UserListQueryBo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `user` where deleted = 0
+    <if test="userName != null">
+      and user_name like concat('%', #{userName},'%')
+    </if>
+    <if test="userNickName != null">
+      and user_nick_name like concat('%', #{userNickName},'%')
+    </if>
+    <if test="mobile != null">
+      and mobile like concat('%', #{mobile},'%')
+    </if>
+    <if test="email != null">
+      and email like concat('%', #{email},'%')
+    </if>
+    <if test="status != null">
+      and status =#{status}
+    </if>
+  </select>
+
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from `user` where deleted = 0
+    <if test="userName != null">
+      and user_name = #{userName}
+    </if>
+  </select>
+
+</mapper>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easy.infra.dao.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.easy.infra.dto.UserRole">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="BIGINT" property="updateUserId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, user_id, role_id, create_user_id, create_date, update_user_id, update_date, deleted
+  </sql>
+  <insert id="insert" parameterType="com.easy.infra.dto.UserRole">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.easy.infra.dto.UserRole">
+    update user_role
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+  </update>
+  <select id="select" parameterType="com.easy.infra.dto.UserRole" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="userId != null">
+       and user_id = #{userId,jdbcType=BIGINT}
+    </if>
+    <if test="roleId != null">
+       and role_id = #{roleId,jdbcType=BIGINT}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="deleted != null">
+       and deleted = #{deleted,jdbcType=TINYINT}
+    </if>
+  </select>
+  <select id="selectOne" parameterType="com.easy.infra.dto.UserRole" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="userId != null">
+       and user_id = #{userId,jdbcType=BIGINT}
+    </if>
+    <if test="roleId != null">
+       and role_id = #{roleId,jdbcType=BIGINT}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="deleted != null">
+       and deleted = #{deleted,jdbcType=TINYINT}
+    </if>
+     limit 1 
+  </select>
+
+
+  <insert id="batchInsertOrUpdate" parameterType="java.util.List" >
+    INSERT INTO
+    user_role
+    (user_id, role_id, create_user_id, update_user_id)
+    VALUES
+    <foreach collection="userRoleList" item="userRole" separator=",">
+      (
+      #{userRole.userId},
+      #{userRole.roleId},
+      #{userRole.createUserId}
+      )
+    </foreach>
+    on duplicate key update
+    update_user_id = values(update_user_id)
+  </insert>
+
+  <delete id="deleteByUserIds">
+    update role_authority set deleted=1, update_user_id=#{updateUserId}
+    where 1=1
+    <if test="roleIds != null and roleIds.size() > 0">
+      and id in
+      <foreach collection="roleIds" item="roleId" index="index" open="(" close=")" separator=",">
+        #{roleId}
+      </foreach>
+    </if>
+  </delete>
+
+  <select id="selectByUserIds" parameterType="java.util.List" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_role where deleted = 0
+    <if test="userIds != null">
+      and id in
+      <foreach collection="userIds" item="userId" separator="," open="(" close=")">
+        #{userId}
+      </foreach>
+    </if>
+  </select>
+
+</mapper>

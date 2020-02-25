@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easy.infra.dao.OrganizationMapper">
+  <resultMap id="BaseResultMap" type="com.easy.infra.dto.Organization">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="organization_name" jdbcType="VARCHAR" property="organizationName" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="BIGINT" property="updateUserId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, organization_name, parent_id, create_user_id, create_date, update_user_id, update_date
+  </sql>
+
+  <insert id="insert" parameterType="com.easy.infra.dto.Organization">
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="organizationName != null">
+        organization_name,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="organizationName != null">
+        #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.easy.infra.dto.Organization">
+    update organization
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="organizationName != null">
+        organization_name = #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+  </update>
+  <select id="select" parameterType="com.easy.infra.dto.Organization" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from organization where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="organizationName != null">
+       and organization_name = #{organizationName,jdbcType=VARCHAR}
+    </if>
+    <if test="parentId != null">
+       and parent_id = #{parentId,jdbcType=BIGINT}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+  <select id="selectOne" parameterType="com.easy.infra.dto.Organization" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from organization where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="organizationName != null">
+       and organization_name = #{organizationName,jdbcType=VARCHAR}
+    </if>
+    <if test="parentId != null">
+       and parent_id = #{parentId,jdbcType=BIGINT}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+     limit 1 
+  </select>
+
+  <delete id="deleteByPkId" parameterType="java.lang.Long">
+    delete organization where id=#{id}
+  </delete>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from organization where deleted = 0
+  </select>
+</mapper>

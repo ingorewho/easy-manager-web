@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easy.infra.dao.MenuAuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.easy.infra.dto.MenuAuthority">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="BIGINT" property="updateUserId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, menu_code, menu_name, parent_id, create_user_id, create_date, update_user_id, update_date
+  </sql>
+  <insert id="insert" parameterType="com.easy.infra.dto.MenuAuthority">
+    insert into menu_authority
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menuCode != null">
+        menu_code,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="menuCode != null">
+        #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.easy.infra.dto.MenuAuthority">
+    update menu_authority
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="menuCode != null">
+        menu_code = #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+  </update>
+  <select id="select" parameterType="com.easy.infra.dto.MenuAuthority" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu_authority where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="menuCode != null">
+       and menu_code = #{menuCode,jdbcType=VARCHAR}
+    </if>
+    <if test="menuName != null">
+       and menu_name = #{menuName,jdbcType=VARCHAR}
+    </if>
+    <if test="parentId != null">
+       and parent_id = #{parentId,jdbcType=VARCHAR}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+  <select id="selectOne" parameterType="com.easy.infra.dto.MenuAuthority" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu_authority where 1 = 1 
+    <if test="id != null">
+       and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="menuCode != null">
+       and menu_code = #{menuCode,jdbcType=VARCHAR}
+    </if>
+    <if test="menuName != null">
+       and menu_name = #{menuName,jdbcType=VARCHAR}
+    </if>
+    <if test="parentId != null">
+       and parent_id = #{parentId,jdbcType=VARCHAR}
+    </if>
+    <if test="createUserId != null">
+       and create_user_id = #{createUserId,jdbcType=BIGINT}
+    </if>
+    <if test="createDate != null">
+       and create_date = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateUserId != null">
+       and update_user_id = #{updateUserId,jdbcType=BIGINT}
+    </if>
+    <if test="updateDate != null">
+       and update_date = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+     limit 1 
+  </select>
+
+  <delete id="deleteByPkId" parameterType="java.lang.Long">
+    delete menu_authority
+    where id=#{id}
+  </delete>
+
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from menu_authority where deleted = 0
+  </select>
+
+</mapper>
